@@ -1,0 +1,13 @@
+branch,category,payment_method,high_value_transactions,avg_transaction_value,avg_customer_satisfaction
+WALM066,Home and lifestyle,Cash,3,715.94,4.73
+WALM079,Sports and travel,Cash,3,472.06,7.17
+WALM030,Health and beauty,Ewallet,3,454.37,7.47
+WALM074,Electronic accessories,Cash,4,443.3,5.35
+WALM096,Fashion accessories,Cash,3,430.89,7.13
+WALM057,Fashion accessories,Ewallet,4,417.44,5.0
+WALM023,Home and lifestyle,Ewallet,3,405.97,6.83
+WALM017,Fashion accessories,Credit card,4,399.75,6.65
+WALM003,Electronic accessories,Credit card,6,392.81,4.78
+WALM071,Fashion accessories,Ewallet,3,381.0,9.07
+WALM008,Home and lifestyle,Credit card,5,377.14,4.98
+WALM009,Fashion accessories,Ewallet,3,356.47,7.47

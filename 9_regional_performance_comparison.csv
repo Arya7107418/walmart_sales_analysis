@@ -1,0 +1,11 @@
+city,total_branches,total_transactions,total_revenue,avg_transaction_value,avg_customer_rating
+Weslaco,2,396,46351.79,117.05,5.18
+Waxahachie,2,378,40703.33,107.68,5.22
+Plano,1,235,25688.34,109.31,5.34
+San Antonio,1,186,24950.56,134.14,5.37
+Port Arthur,1,239,24524.37,102.61,5.3
+Richardson,1,229,24460.6,106.81,5.4
+Rockwall,1,222,24077.7,108.46,5.36
+Round Rock,1,196,23327.34,119.02,5.24
+Schertz,1,205,23095.43,112.66,5.32
+San Marcos,1,188,22124.51,117.68,5.08
