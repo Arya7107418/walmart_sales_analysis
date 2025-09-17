@@ -1,0 +1,4 @@
+payment_method,no_of_transactions,total_items_sold,total_revenue,avg_transaction_value
+"Credit card",4256,9567,488821.02,114.85
+Ewallet,3881,8932,457316.07,117.83
+Cash,1832,4984,263589.29,143.88

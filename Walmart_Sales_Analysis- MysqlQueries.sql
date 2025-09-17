@@ -1,128 +1,205 @@
-SELECT COUNT(DISTINCT BRANCH) BRANCH FROM walmart;
-SELECT MAX(quantity) FROM walmart;
-SELECT MIN(quantity) FROM walmart;
+-- BUSINESS PROBLEM 1: Payment Method Performance Analysis
+-- Question: Which payment methods do customers prefer and generate most revenue?
+-- HomeLane Relevance: Understanding customer payment preferences for interior design projects
 
--- Business Problems
--- Q.1 Find different payment method and number of transactions, number of qty sold
-SELECT payment_method, COUNT(*) as no_of_transactions,
-SUM(quantity) as no_of_qty_sold
- FROM walmart GROUP BY payment_method 
- ORDER BY no_of_transactions DESC;
- 
- -- Q.2 Identify the highest-rated category in each branch , displaying the branch, category
- -- AVG RATING
- 
-WITH agg AS (
-  SELECT branch, category, AVG(rating) AS avg_rating
+SELECT 
+    payment_method, 
+    COUNT(*) as no_of_transactions,
+    SUM(quantity) as total_items_sold,
+    ROUND(SUM(total), 2) as total_revenue,
+    ROUND(AVG(total), 2) as avg_transaction_value
+FROM walmart 
+GROUP BY payment_method 
+ORDER BY total_revenue DESC;
+
+-- BUSINESS PROBLEM 2: Best Performing Category by Branch Location
+-- Question: Which product category performs best in each branch?
+-- HomeLane Relevance: Understanding regional preferences for interior design services
+
+WITH branch_category_performance AS (
+  SELECT 
+    branch, 
+    category, 
+    AVG(rating) AS avg_rating,
+    COUNT(*) as total_transactions,
+    SUM(total) as category_revenue
   FROM walmart
   GROUP BY branch, category
 ),
-ranked AS (
+ranked_categories AS (
   SELECT
     branch,
     category,
-    avg_rating,
-    RANK() OVER (PARTITION BY branch ORDER BY avg_rating DESC) AS rank_in_branch
-  FROM agg
+    ROUND(avg_rating, 2) as avg_rating,
+    total_transactions,
+    ROUND(category_revenue, 2) as revenue,
+    RANK() OVER (PARTITION BY branch ORDER BY avg_rating DESC) AS performance_rank
+  FROM branch_category_performance
 )
-SELECT *
-FROM ranked
-WHERE rank_in_branch = 1
+SELECT 
+    branch, 
+    category, 
+    avg_rating,
+    total_transactions,
+    revenue
+FROM ranked_categories
+WHERE performance_rank = 1
 ORDER BY branch;
 
--- Q3 Identify the busiest date for each branch based on the number of transactions
-SELECT *
+-- BUSINESS PROBLEM 3: Peak Operating Days by Branch
+-- Question: Which days are busiest for each branch location?
+-- HomeLane Relevance: Optimal scheduling for design consultations and site visits
+
+SELECT 
+    branch, 
+    day_name, 
+    total_transactions,
+    total_revenue
 FROM (
     SELECT 
         branch,
         DATE_FORMAT(STR_TO_DATE(date, '%d/%m/%y'), '%W') AS day_name,
-        COUNT(*) AS no_transactions,
-        RANK() OVER (
-            PARTITION BY branch 
-            ORDER BY COUNT(*) DESC
-        ) AS rnk
+        COUNT(*) AS total_transactions,
+        ROUND(SUM(total), 2) as total_revenue,
+        RANK() OVER (PARTITION BY branch ORDER BY COUNT(*) DESC) AS day_rank
     FROM walmart
     GROUP BY branch, day_name
-) t
-WHERE rnk = 1
-ORDER BY branch;
+) ranked_days
+WHERE day_rank = 1
+ORDER BY total_transactions DESC;
 
--- Q4 Calculate the total quantity of items sold per payment methods. List the payment_method and total_quantity.
-SELECT payment_method , SUM(quantity) as no_of_qty_sold
-FROM walmart
-GROUP BY payment_method
-ORDER BY no_of_qty_sold DESC;
+-- BUSINESS PROBLEM 4: Customer Satisfaction Analysis by City
+-- Question: How do customer ratings vary across different cities and categories?
+-- HomeLane Relevance: Regional service quality benchmarking
 
--- Q5 Determine the average, minimum and maximum rating of products for each city. 
--- List the city, average_rating, min_rating, max_rating.
 SELECT
- city, category,
- MIN(rating) as min_rating,
- MAX(rating) as max_rating,
- AVG(rating) as avg_rating
- FROM walmart GROUP BY city, category;
+    city, 
+    category,
+    COUNT(*) as total_reviews,
+    ROUND(MIN(rating), 1) as lowest_rating,
+    ROUND(MAX(rating), 1) as highest_rating,
+    ROUND(AVG(rating), 1) as average_rating
+FROM walmart 
+GROUP BY city, category
+HAVING total_reviews >= 5  -- Only cities with significant data
+ORDER BY average_rating DESC, total_reviews DESC
+LIMIT 20;
 
--- Q6 Calculate the total profit for each category by considering total_profit as (unit_price * quantity * profit_margin).
--- List category and total_profit, ordered from highest to lowest profit.
+-- BUSINESS PROBLEM 5: Category Profitability Analysis
+-- Question: Which product categories generate the highest profits?
+-- HomeLane Relevance: Focus resources on most profitable interior design services
+
 SELECT 
     category,
-    SUM(total) AS total_revenue,
-    SUM(total * profit_margin) AS profit
+    COUNT(*) as total_transactions,
+    ROUND(SUM(total), 2) AS total_revenue,
+    ROUND(SUM(total * profit_margin), 2) AS total_profit,
+    ROUND(AVG(profit_margin * 100), 2) as avg_profit_margin_percent,
+    ROUND((SUM(total * profit_margin) / SUM(total)) * 100, 2) as overall_margin_percent
 FROM walmart
-GROUP BY category;
+GROUP BY category
+ORDER BY total_profit DESC;
 
--- Q7 Determine the most common payment method for each Branch.
--- Display Branch and the preferred_payment_method.
-SELECT branch, payment_method, total_trans, rnk
+-- BUSINESS PROBLEM 6: Branch Payment Method Preferences
+-- Question: What is the most popular payment method for each branch?
+-- HomeLane Relevance: Optimize payment processing systems per location
+
+SELECT 
+    branch, 
+    payment_method, 
+    transaction_count,
+    revenue_share
 FROM (
-  SELECT branch,
-         payment_method,
-         COUNT(*) AS total_trans,
-         RANK() OVER (PARTITION BY branch ORDER BY COUNT(*) DESC) AS rnk
+  SELECT 
+    branch,
+    payment_method,
+    COUNT(*) AS transaction_count,
+    ROUND(SUM(total), 2) as revenue_share,
+    RANK() OVER (PARTITION BY branch ORDER BY COUNT(*) DESC) AS preference_rank
   FROM walmart
   GROUP BY branch, payment_method
-) t
-WHERE rnk = 1;
+) payment_preferences
+WHERE preference_rank = 1
+ORDER BY transaction_count DESC;
 
--- Q8 Categorise sales into 3 group MORNING, AFTERNOON, EVENING
--- Find out each of the shift and number of invoices
+-- BUSINESS PROBLEM 7: Sales Performance by Time of Day
+-- Question: Which time periods generate the most business?
+-- HomeLane Relevance: Optimize consultant scheduling and service delivery timing
+
 SELECT
-    branch,
-    CASE 
-        WHEN HOUR(TIME(time)) < 12 THEN 'Morning'
-        WHEN HOUR(TIME(time)) BETWEEN 12 AND 17 THEN 'Afternoon'
-        ELSE 'Evening'
-    END AS shift,
-    COUNT(*) AS num_invoices
-FROM walmart
-GROUP BY branch, shift
-ORDER BY branch, num_invoices DESC;
+    time_period,
+    total_transactions,
+    total_revenue,
+    avg_transaction_value,
+    ROUND((total_revenue / SUM(total_revenue) OVER()) * 100, 2) as revenue_percentage
+FROM (
+    SELECT
+        CASE 
+            WHEN HOUR(TIME(time)) < 12 THEN 'Morning (6AM-12PM)'
+            WHEN HOUR(TIME(time)) BETWEEN 12 AND 17 THEN 'Afternoon (12PM-5PM)'
+            ELSE 'Evening (5PM-10PM)'
+        END AS time_period,
+        COUNT(*) AS total_transactions,
+        ROUND(SUM(total), 2) as total_revenue,
+        ROUND(AVG(total), 2) as avg_transaction_value
+    FROM walmart
+    GROUP BY time_period
+) time_analysis
+ORDER BY total_revenue DESC;
 
--- Q9 Identify 5 branch with highest decrease ratio in
--- revenue compare to last year (current year 2023 and last year 2022)
-WITH revenue_2022 AS (
+-- BUSINESS PROBLEM 8: Year-over-Year Performance Decline Analysis
+-- Question: Which branches show declining performance that need intervention?
+-- HomeLane Relevance: Early warning system for underperforming locations
+
+WITH yearly_performance AS (
     SELECT 
         branch,
-        SUM(total) AS revenue
+        YEAR(STR_TO_DATE(date, '%d/%m/%Y')) as year,
+        COUNT(*) as transactions,
+        ROUND(SUM(total), 2) AS annual_revenue,
+        ROUND(AVG(rating), 2) as avg_rating
     FROM walmart
-    WHERE YEAR(STR_TO_DATE(date, '%d/%m/%Y')) = 2022
-    GROUP BY branch
+    WHERE YEAR(STR_TO_DATE(date, '%d/%m/%Y')) IN (2022, 2023)
+    GROUP BY branch, year
 ),
-revenue_2023 AS (
+performance_comparison AS (
     SELECT 
         branch,
-        SUM(total) AS revenue
-    FROM walmart
-    WHERE YEAR(STR_TO_DATE(date, '%d/%m/%Y')) = 2023
+        MAX(CASE WHEN year = 2022 THEN annual_revenue END) AS revenue_2022,
+        MAX(CASE WHEN year = 2023 THEN annual_revenue END) AS revenue_2023,
+        MAX(CASE WHEN year = 2022 THEN transactions END) AS transactions_2022,
+        MAX(CASE WHEN year = 2023 THEN transactions END) AS transactions_2023
+    FROM yearly_performance
     GROUP BY branch
+    HAVING revenue_2022 IS NOT NULL AND revenue_2023 IS NOT NULL
 )
 SELECT 
-    r2022.branch,
-    r2022.revenue AS last_year_revenue,
-    r2023.revenue AS current_year_revenue,
-    ROUND(((r2022.revenue - r2023.revenue) / r2022.revenue) * 100, 2) AS revenue_decrease_ratio
-FROM revenue_2022 AS r2022
-JOIN revenue_2023 AS r2023 ON r2022.branch = r2023.branch
-WHERE r2022.revenue > r2023.revenue
-ORDER BY revenue_decrease_ratio DESC
-LIMIT 5;
+    branch,
+    revenue_2022,
+    revenue_2023,
+    transactions_2022,
+    transactions_2023,
+    ROUND(((revenue_2023 - revenue_2022) / revenue_2022) * 100, 2) AS revenue_growth_percent,
+    ROUND(((transactions_2023 - transactions_2022) / transactions_2022) * 100, 2) AS transaction_growth_percent
+FROM performance_comparison
+ORDER BY revenue_growth_percent ASC
+LIMIT 10;
+
+-- BUSINESS PROBLEM 9: High-Value Customer Transaction Analysis
+-- Question: What characterizes high-value transactions?
+-- HomeLane Relevance: Understanding premium customer behavior for luxury interior projects
+
+SELECT 
+    branch,
+    category,
+    payment_method,
+    COUNT(*) as high_value_transactions,
+    ROUND(AVG(total), 2) as avg_transaction_value,
+    ROUND(AVG(rating), 2) as avg_customer_satisfaction,
+    ROUND(AVG(quantity), 2) as avg_items_per_transaction
+FROM walmart
+WHERE total > (SELECT AVG(total) * 1.5 FROM walmart)  -- Top 50% above average
+GROUP BY branch, category, payment_method
+HAVING high_value_transactions >= 5
+ORDER BY avg_transaction_value DESC
+LIMIT 15;

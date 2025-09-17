@@ -1,0 +1,4 @@
+time_period,total_transactions,total_revenue,avg_transaction_value,revenue_percentage
+"Afternoon (12PM-5PM)",4636,578817.77,124.85,47.85
+"Evening (5PM-10PM)",3246,379401.6,116.88,31.36
+"Morning (6AM-12PM)",2087,251507.01,120.51,20.79

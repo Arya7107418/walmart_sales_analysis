@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">branch</Data></Cell>
+			<Cell><Data ss:Type="String">revenue_2022</Data></Cell>
+			<Cell><Data ss:Type="String">revenue_2023</Data></Cell>
+			<Cell><Data ss:Type="String">transactions_2022</Data></Cell>
+			<Cell><Data ss:Type="String">transactions_2023</Data></Cell>
+			<Cell><Data ss:Type="String">revenue_growth_percent</Data></Cell>
+			<Cell><Data ss:Type="String">transaction_growth_percent</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="String">WALM045</Data></Cell>
+			<Cell><Data ss:Type="Number">1731</Data></Cell>
+			<Cell><Data ss:Type="Number">647</Data></Cell>
+			<Cell><Data ss:Type="String">19</Data></Cell>
+			<Cell><Data ss:Type="String">7</Data></Cell>
+			<Cell><Data ss:Type="Number">-62.62</Data></Cell>
+			<Cell><Data ss:Type="Number">-63.16</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM047</Data></Cell>
+			<Cell><Data ss:Type="Number">2581</Data></Cell>
+			<Cell><Data ss:Type="Number">1069</Data></Cell>
+			<Cell><Data ss:Type="String">28</Data></Cell>
+			<Cell><Data ss:Type="String">12</Data></Cell>
+			<Cell><Data ss:Type="Number">-58.58</Data></Cell>
+			<Cell><Data ss:Type="Number">-57.14</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM098</Data></Cell>
+			<Cell><Data ss:Type="Number">2446</Data></Cell>
+			<Cell><Data ss:Type="Number">1030</Data></Cell>
+			<Cell><Data ss:Type="String">21</Data></Cell>
+			<Cell><Data ss:Type="String">9</Data></Cell>
+			<Cell><Data ss:Type="Number">-57.89</Data></Cell>
+			<Cell><Data ss:Type="Number">-57.14</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM033</Data></Cell>
+			<Cell><Data ss:Type="Number">2099</Data></Cell>
+			<Cell><Data ss:Type="Number">931</Data></Cell>
+			<Cell><Data ss:Type="String">20</Data></Cell>
+			<Cell><Data ss:Type="String">11</Data></Cell>
+			<Cell><Data ss:Type="Number">-55.65</Data></Cell>
+			<Cell><Data ss:Type="Number">-45.00</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM081</Data></Cell>
+			<Cell><Data ss:Type="Number">1723</Data></Cell>
+			<Cell><Data ss:Type="Number">850</Data></Cell>
+			<Cell><Data ss:Type="String">18</Data></Cell>
+			<Cell><Data ss:Type="String">11</Data></Cell>
+			<Cell><Data ss:Type="Number">-50.67</Data></Cell>
+			<Cell><Data ss:Type="Number">-38.89</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM059</Data></Cell>
+			<Cell><Data ss:Type="Number">2060</Data></Cell>
+			<Cell><Data ss:Type="Number">1123</Data></Cell>
+			<Cell><Data ss:Type="String">17</Data></Cell>
+			<Cell><Data ss:Type="String">15</Data></Cell>
+			<Cell><Data ss:Type="Number">-45.49</Data></Cell>
+			<Cell><Data ss:Type="Number">-11.76</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM064</Data></Cell>
+			<Cell><Data ss:Type="Number">1786</Data></Cell>
+			<Cell><Data ss:Type="Number">980</Data></Cell>
+			<Cell><Data ss:Type="String">21</Data></Cell>
+			<Cell><Data ss:Type="String">11</Data></Cell>
+			<Cell><Data ss:Type="Number">-45.13</Data></Cell>
+			<Cell><Data ss:Type="Number">-47.62</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM097</Data></Cell>
+			<Cell><Data ss:Type="Number">1446</Data></Cell>
+			<Cell><Data ss:Type="Number">814</Data></Cell>
+			<Cell><Data ss:Type="String">14</Data></Cell>
+			<Cell><Data ss:Type="String">9</Data></Cell>
+			<Cell><Data ss:Type="Number">-43.71</Data></Cell>
+			<Cell><Data ss:Type="Number">-35.71</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM085</Data></Cell>
+			<Cell><Data ss:Type="Number">1921</Data></Cell>
+			<Cell><Data ss:Type="Number">1179</Data></Cell>
+			<Cell><Data ss:Type="String">19</Data></Cell>
+			<Cell><Data ss:Type="String">14</Data></Cell>
+			<Cell><Data ss:Type="Number">-38.63</Data></Cell>
+			<Cell><Data ss:Type="Number">-26.32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="String">WALM078</Data></Cell>
+			<Cell><Data ss:Type="Number">2298</Data></Cell>
+			<Cell><Data ss:Type="Number">1421</Data></Cell>
+			<Cell><Data ss:Type="String">19</Data></Cell>
+			<Cell><Data ss:Type="String">12</Data></Cell>
+			<Cell><Data ss:Type="Number">-38.16</Data></Cell>
+			<Cell><Data ss:Type="Number">-36.84</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>
