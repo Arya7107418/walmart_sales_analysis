@@ -31,6 +31,18 @@ This comprehensive data analytics project demonstrates end-to-end retail intelli
 | **Geographic Coverage** | Multiple Texas cities | Regional performance comparison |
 | **Rating System** | 1-10 customer satisfaction | Quality assessment framework |
 
+## 📊 Dashboard Visualizations
+
+### **Executive Analytics Dashboard**
+![Walmart Retail Business Analysis Dashboard](https://github.com/user/repo/blob/main/visualizations/walmart_dashboard.png)
+
+*Comprehensive dashboard showcasing revenue distribution, category performance, time-based analysis, and branch performance metrics*
+
+### **Professional Portfolio Dashboard**
+![Walmart Retail Business Analysis - Professional Portfolio](https://github.com/user/repo/blob/main/visualizations/portfolio_dashboard.png)
+
+*Executive-level visualization highlighting payment method analysis, profit distribution, temporal patterns, and top-performing cities*
+
 ## 🔍 Key Business Insights Delivered
 
 ### 💳 **Payment Strategy Intelligence**
@@ -205,7 +217,7 @@ walmart-sales-analysis/
 
 ## 📧 Professional Contact
 
-**Anjali Arya** - *Senior Data Analytics Professional*
+**Anjali Arya** - * Data Analytics Enthusiast*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/anjali-arya-a936a6223)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Arya7107418)
