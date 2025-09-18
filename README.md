@@ -34,7 +34,7 @@ This comprehensive data analytics project demonstrates end-to-end retail intelli
 ## 📊 Dashboard Visualizations
 
 ### **Executive Analytics Dashboard**
-![Walmart Retail Business Analysis Dashboard](https://github.com/user/repo/blob/main/visualizations/walmart_dashboard.png)
+![Walmart Retail Business Analysis Dashboard](https://github.com/Arya7107418/walmart_sales_analysis/blob/main/Walmart_Business_Analysis_Dashboard.png)
 
 *Comprehensive dashboard showcasing revenue distribution, category performance, time-based analysis, and branch performance metrics*
 
