@@ -39,7 +39,7 @@ This comprehensive data analytics project demonstrates end-to-end retail intelli
 *Comprehensive dashboard showcasing revenue distribution, category performance, time-based analysis, and branch performance metrics*
 
 ### **Professional Portfolio Dashboard**
-![Walmart Retail Business Analysis - Professional Portfolio](https://github.com/user/repo/blob/main/visualizations/portfolio_dashboard.png)
+![Walmart Retail Business Analysis - Professional Portfolio](https://github.com/Arya7107418/walmart_sales_analysis/blob/main/Walmart_Analysis_Charts.png)
 
 *Executive-level visualization highlighting payment method analysis, profit distribution, temporal patterns, and top-performing cities*
 
