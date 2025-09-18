@@ -308,17 +308,16 @@ df.to_sql('walmart', engine, if_exists='replace', index=False)
 ### **Repository Organization**
 ```
 walmart-sales-analysis/
-├── 📊 Analysis Outputs/
-│   ├── 1_payment_method_analysis.csv
-│   ├── 2_branch_category_performance.csv
-│   ├── 4_customer_satisfaction_by_city.csv
+|
+├── 1_payment_method_analysis.csv
+├── 2_branch_category_performance.csv
+├── 4_customer_satisfaction_by_city.csv
 │   ├── 5_category_profitability.csv
 │   ├── 6_sales_by_time_period.csv
-│   ├── 7_branch_payment_preferences.csv
-│   ├── 8_high_value_transactions.csv
-│   └── 9_regional_performance_comparison.csv
-├── 📓 Jupyter Notebooks/
-│   └── project.ipynb                  # Complete analysis pipeline
+│── 7_branch_payment_preferences.csv
+│── 8_high_value_transactions.csv
+│── 9_regional_performance_comparison.csv
+├─ project.ipynb # Complete analysis pipeline
 ├── 🗄️ Database Files/
 │   ├── Walmart_Sales_Analysis-MysqlQueries.sql
 │   ├── walmart_business_analysis.xml
