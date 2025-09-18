@@ -263,7 +263,7 @@ WALMART_SALES_ANALYSIS_PROJECT/
 
 ## 📧 Professional Contact
 
-**Anjali Arya** - *Senior Data Analytics Professional*
+**Anjali Arya** - *Data Analytics & Business Analytics Enthusiast*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/anjali-arya-a936a6223)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Arya7107418)
@@ -333,16 +333,6 @@ walmart-sales-analysis/
 └── 🗜️ Data Archive/
     └── walmart-10k-sales-datasets.zip
 ```
-
-### **Development Environment**
-![VS Code Development Environment](https://github.com/Arya7107418/walmart_sales_analysis/blob/main/screenshots/vscode_environment.png)
-
-*Professional development setup with Jupyter integration, SQL syntax highlighting, and comprehensive project structure*
-
-### **GitHub Repository**
-![GitHub Repository Structure](https://github.com/Arya7107418/walmart_sales_analysis/blob/main/screenshots/github_repo.png)
-
-*Well-organized repository with proper version control, comprehensive documentation, and structured file organization*
 
 ## 🔄 Advanced Features & Future Enhancements
 - **Real-time Analytics**: Integration capability with live POS systems
